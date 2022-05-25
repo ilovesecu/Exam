@@ -15,7 +15,47 @@ package basic;
 Â¦ Â¦ Â¦ Â¦Â¦ Â¦ Â¦ Â¦Â¦ Â¦ Â¦ Â¦Â¦ 100 
  */
 public class P20 {
+	//my code
 	public static void main(String[] args) {
+		P20 p20 = new P20();
+		
+		//p20.myCode(); //³» ÄÚµå
+		//p20.jins(); //Áø¾²ÄÚµù (Á» ´õ ±ò²û)
+	}
+	// Áø¾²ÄÚµùÀº Á» ´õ ±ò²ûÇÔ.
+	public int get369Cnt(int n) {
+		int cnt = 0;
+		while(n>0) {
+			int remain = n%10;
+			if(remain==3 || remain==6 || remain==9) {
+				cnt++;
+			}
+			n/=10;
+		}
+		return cnt;
+	}
+	public void jins() {
+		StringBuffer sb = new StringBuffer();
+		for(int i=1; i<=100; i++) {
+			int cnt = get369Cnt(i);
+			if(cnt == 0) {
+				sb.append(i);
+			}else {
+				while(cnt > 0) {
+					sb.append("Â¦");
+					cnt--;
+				}	
+			}
+			sb.append(" ");
+			if(i%10==0) {
+				sb.append("\n");
+			}
+		}
+		System.out.println(sb);
+	}
+	
+	//³» ÄÚµå Á» ´õ ÁöÀúºÐÇÔ... ¤Ð¤Ð
+	public void myCode() {
 		StringBuffer sb = new StringBuffer();
 		for(int i=1; i<=100; i++) {
 			int n = i;
@@ -23,13 +63,16 @@ public class P20 {
 			while(n>0) {
 				int j=n%10;
 				if(j==3 || j==6 || j==9) {
-					sb.append("Â¦ ");
+					sb.append("Â¦");
 					noClap = false;
 				}
-				n/=10;
+				n/=10; 
 			}
+			
 			if(noClap) {
 				sb.append(i+" ");
+			}else {
+				sb.append(" ");				
 			}
 			if(i%10 == 0) {
 				sb.append("\n");
@@ -37,5 +80,4 @@ public class P20 {
 		}
 		System.out.println(sb);
 	}
-
 }

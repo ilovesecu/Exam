@@ -14,9 +14,25 @@ public class P25 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
+		int clone = n;
+		int cnt = 0;
 		if(n==0) {
 			System.out.println("1");
 		}else {
+			
+			while(true) {
+				cnt++;
+				int fir = clone/10;
+				int sec = clone%10;
+				int next = (fir+sec)%10;
+				int complete = sec*10 + next;
+				//System.out.println(complete);
+				if(complete == n) {
+					System.out.println(cnt);
+					break;
+				}
+				clone = complete;
+			}
 			
 		}
 		sc.close();

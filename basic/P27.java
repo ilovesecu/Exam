@@ -21,8 +21,65 @@ public class P27 {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int[][] arr = new int[n][n];
+		int r = 0 ,c = -1;
+		int key = n; //각 단계별 반복해야할 갯수
+		
+		int number = 1; 
+		
+		while(key>0) {
+			c++;
+			for(int i=0; i<key; i++) {
+				arr[r][c++] = number++;
+			}
+			
+			c--;key--;r++;
+			for(int i=0; i<key; i++) {
+				arr[r++][c] = number++;
+			}
+			r--;
+			for(int i=0; i<key; i++) {
+				arr[r][--c] = number++;
+			}
+			key--;
+			for(int i=0; i<key; i++) {
+				arr[--r][c] = number++;
+			}
+			
+		}
+		
+		
+		
+		for(r=0; r<arr.length; r++) {
+			for(c=0;c<arr[r].length; c++) {
+				System.out.printf("%3d",arr[r][c]);
+			}
+			System.out.println("");
+		}
 		
 		sc.close();
 	}
 
 }
+
+/*
+// →
+		for(c=0; c<key; c++) {
+			arr[r][c] = number++;  
+		}
+		// ↓
+		key--; c--;
+		for(r=0; r<key; r++) {
+			arr[r+1][c] = number++;	
+		}
+		
+		//←
+		for(c=key-1; c>=0; c--) {
+			arr[r][c] = number++;	
+		}
+		
+		//↑
+		key--; c++;
+		for(r=key; r<key; r--) {
+			arr[r][c] = number++;
+		}
+ */
